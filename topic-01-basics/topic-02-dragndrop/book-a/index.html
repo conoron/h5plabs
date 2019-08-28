@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  Drag and Drop  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01">
+          Lab-01
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-01-basics/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-01-basics/book-b/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-02-dragndrop/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-03-flashcards/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-04-presentation/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-05-timeline/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-06-video/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-07-next/book-a/index.html">Lab-01 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01">
+            <h1>Objectives</h1>
+<p>Create Drag and drop questions using both text and images as drag-able alternatives and integrates into a Moodle module.</p>
+<h2>How to use this lab</h2>
+<p>When you click on the lab card on the workshop screen (see example below) you will be presented with the labs steps screen</p>
+<p><img src="img/19.png" alt=""></p>
+<h2>Lab steps</h2>
+<p>Next you will need to work your way through each step, starting with the objective (this screen) then work your way through the steps start with 01 then moving to 02 and so on.</p>
+<p><img src="img/20.png" alt=""></p>
+<h2>Getting back to the home screen</h2>
+<p>In order to get back to the workshop screen simply click on the workshop name in the top left</p>
+<p><img src="img/21.png" alt=""></p>
+<h2>Next</h2>
+<p>Move to step 01 in the lab</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Lets get started</h1>
+<p>To view the drag and drop component on the H5P website please follow the example link on the workshop page or click <a href="https://h5p.org/drag-and-drop" target="_blank">here</a></p>
+<h2>The Context</h2>
+<p>So for this example I will use an electronic circuit board image and will place </p>
+<h2>Log into Moodle</h2>
+<p>Log into Moodle <a href="http://conorpaul.com/moodle35" target="_blank">here</a>  and navigate to your sandbox area where you want to use the H5P flashcard component, at this stage we will start the process by adding the H5P Interactive Content type in Moodle.</p>
+<h2>Adding the activity</h2>
+<p>I have decided to call the section Drag and Drop example but you may want to use some other name which is okay, select the Add an activity or resource option.</p>
+<p><img src="img/01.jpg" alt=""></p>
+<h2>Add in Interactive Content</h2>
+<p>Now select the Interactive content type from the pop-up list</p>
+<p><img src="img/02.jpg" alt=""></p>
+<h2>Search and use the correct Interactive Component</h2>
+<p>A this stage you will start to build the H5P Interactive content. Select or search fin the editor for the component you plan on using, in this case it the Drag and Drop, so I have started the search for &quot;Drag&quot;</p>
+<p><img src="img/03.jpg" alt=""></p>
+<p>Now you should see the drag and drop component select the detail button </p>
+<p><img src="img/04.jpg" alt=""></p>
+<p>Now we can use this component now by selecting the &quot;use&quot; button</p>
+<p><img src="img/05.jpg" alt=""></p>
+<h2>Next</h2>
+<p>Move to step 02 in the lab</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Settings and Tasks</h1>
+<h2>The Build</h2>
+<p>So now that you have selected the Drag and Drop component we will now start to build the details</p>
+<h2>Images</h2>
+<p>Depending on what your context is you will need to &quot;add&quot; a background image, I have choose and electronic circuit board as my background image, you can source your own image.</p>
+<p><img src="img/06.jpg" alt=""></p>
+<h2>in Settings</h2>
+<p><img src="img/08.jpg" alt=""></p>
+<p>We must give the component a title and we must also provide a title of this question, see image below</p>
+<p><img src="img/07.jpg" alt=""></p>
+<h2>in Tasks</h2>
+<p>Now we must provide &quot;drop Zones&quot;, again depending on your context you need to insert a drop zone in a particular position on the image </p>
+<p><img src="img/09.jpg" alt=""></p>
+<p>Start by inserting your drop zones.</p>
+<p><img src="img/10.jpg" alt=""></p>
+<p>Once you have created your drop zone you can click on a drop zone and move by dragging the dropzone to the desired location.</p>
+<p><img src="img/11.jpg" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Links and Code Blocks</h1>
+<h2>Text</h2>
+<p>No that you have the drop zones in place you now need to create the associated texts that the student will use to drag and drop onto the drop zone, when we create the text will must tell each one which is the correct drop zone.</p>
+<p><img src="img/12.jpg" alt=""></p>
+<p>For this example I am going to create 4 different texts that I can use in this Drag and Drop example</p>
+<p><img src="img/13.jpg" alt="">Q</p>
+<h2>Associate the Correct Text with each Drop Zone</h2>
+<p>Now that we have Drop Zone and we have Text we now need to associate the correct texts to the right drop zone, we can do this by clicking on the drop zone and choosing the correct text.</p>
+<p><img src="img/14.jpg" alt=""></p>
+<p>Then make the association between the drop zone you just clicked on the the correct text, this means when the student drags and drop that text onto the drop zone H5P will make the association and decide if the user is correct or not.</p>
+<p><img src="img/15.jpg" alt=""></p>
+<p>Now all you have to do is make the correct association and save you changes by clicking done, note repeat this step as needed, so in this example I have 4 texts so I will make 4 associations.</p>
+<p><img src="img/16.jpg" alt=""></p>
+<h2>Next</h2>
+<p>Move to the Exercise </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>To complete this workshop please complete the drag and drop activity in Moodle</p>
+<h2>Feedback</h2>
+<p>Please let us know if you had any issues with this workshop, we want to make improvements but we need you help, please take a few moment to fill in <a href="https://b.socrative.com/student/#quiz" target="_blank">this feedback</a> we appreciate all comments and suggestions </p>
+<h2>Accreditation</h2>
+<p>In order to receive your accreditation you will have to upload and submit your drag and drop activity.</p>
+<h2>step 1</h2>
+<p>First, you must download the drag and drop activity from your Moodle sandbox page, in order to download first view the H5P activity in Moodle in the bottom left of the screen you should see an option to reuse, click reuse </p>
+<p><img src="img/17.jpg" alt="reuse"></p>
+<p>You can download the H5P activity bu selecting the <strong>Download as an .h5p file</strong> option</p>
+<p><img src="img/18.jpg" alt="download"></p>
+<h2>step 2</h2>
+<p>This file should be in your downloads folder on your computer, drag and drop that file from download to the dropbox area into the assignment submission area in Moodle, and click the <strong>add submission</strong> button <a href="http://conorpaul.com/moodle35/course/view.php?id=9#section-1" target="_blank"> here </a> </p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

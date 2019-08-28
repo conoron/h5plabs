@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  Flashcards   </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01">
+          Lab-01
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-01-basics/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-01-basics/book-b/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-02-dragndrop/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-03-flashcards/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-04-presentation/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-05-timeline/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-06-video/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-07-next/book-a/index.html">Lab-01 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01">
+            <h1>Objectives</h1>
+<p>Create a flashcard that&#39;s intuitive in relation to content covered in class, the flashcard will have images that the user has to pair with questions and answers in the activity.</p>
+<h2>How to use this lab</h2>
+<p>When you click on the lab card on the workshop screen (see example below) you will be presented with the labs steps screen</p>
+<p><img src="img/01.png" alt=""></p>
+<h2>Lab steps</h2>
+<p>Next you will need to work your way through each step, starting with the objective (this screen) then work your way through the steps start with 01 then moving to 02 and so on.</p>
+<p><img src="img/02.png" alt=""></p>
+<h2>Getting back to the home screen</h2>
+<p>In order to get back to the workshop screen simply click on the workshop name in the top left</p>
+<p><img src="img/03.png" alt=""></p>
+<h2>Next</h2>
+<p>Move to step 01 in the lab</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>lets get started</h1>
+<p>To view the Flashcard component on the H5P website please follow the example link on the workshop page or click <a href="https://h5p.org/flashcard" target="_blank">here</a></p>
+<h2>The Context</h2>
+<p>So for this example I will use some example from the Science periodic table</p>
+<h2>Log into Moodle</h2>
+<p>Log into Moodle <a href="http://conorpaul.com/moodle35" target="_blank">here</a>  and navigate to your sandbox area where you want to use the H5P flashcard component, at this stage we will start the process by adding the H5P Interactive Content type in Moodle.</p>
+<h2>Adding the activity</h2>
+<p>I have decided to call the section Flashcard example but you may want to use some other name which is okay, select the Add an activity or resource option.</p>
+<p><img src="img/04.jpg" alt=""></p>
+<h2>Add in Interactive Content</h2>
+<p>Now select the Interactive content type from the pop-up list</p>
+<p><img src="img/05.jpg" alt=""></p>
+<h2>Search and use the correct Interactive Component</h2>
+<p>A this stage you will start to build the H5P Interactive content. Select or search find the editor for the component you plan on using, in this case it the Flashcard, so I have started the search for &quot;Flash&quot;</p>
+<p><img src="img/06.jpg" alt=""></p>
+<p>Now you should see the flashcard component select the detail button </p>
+<p><img src="img/07.jpg" alt=""></p>
+<p>Now we can use this component now by selecting the &quot;use&quot; button</p>
+<p><img src="img/08.jpg" alt=""></p>
+<h2>Next</h2>
+<p>Move to step 02 in the lab</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Images</h1>
+<p>For this example I had to source images from the periodic table, I did a google search for free iamges from the perodic table</p>
+<h2>Free images</h2>
+<p>You can search for royalty free images using a Google search, all you have to do is search for the images. select tools from the menu then select your preferred license type, I choose images labeled for reuse.</p>
+<p><img src="img/09.jpg" alt=""></p>
+<h2>Flashcard Images</h2>
+<p>If you want you can use my images for example from the periodic table, download the archive - <a href="./archives/archive.zip">here</a> and unpack the archive to use the images.</p>
+<h2>Flashcard content</h2>
+<p>The way this flashcard works is the student will be presented with an image and a question and they supply an answer, in this example we are going to use 3 images and 3 associated questions.</p>
+<h2>Flashcard setup</h2>
+<p>Once you have chosen to use the flashcard you searched for in the previous step you now have to start to build the content</p>
+<p>Start by setting up the Title and the Task Description, for this example you can follow my example or if you want to use you own thats fine.</p>
+<p><img src="img/10.jpg" alt=""></p>
+<h2>Flashcard Question</h2>
+<p>No you can start to set up the first question, in order to do this you must fill in the question text in the field provided followed by the correct answer, see image below.</p>
+<p>We will ask them what is the Covalent radius (Å) is . . . associated with the Iron element from the periodic table, the answer is 1.24</p>
+<p><img src="img/11.jpg" alt=""></p>
+<h2>Flashcard image</h2>
+<p>Now you can associate an image with the question, upload your image from you computer that you have chosen or if you want please feel free to use the images supplied in the archive.</p>
+<p><img src="img/12.jpg" alt=""></p>
+<p>You should now have the image in place</p>
+<p><img src="img/13.jpg" alt=""></p>
+<h2>Next</h2>
+<p>Thats the first question done, move to step 03 to add a new question.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>The second question</h1>
+<p>This is the second of three questions</p>
+<h2>Free images</h2>
+<p>If you want you can use my images for example from the periodic table, download the archive - <a href="./archives/archive.zip">here</a> and unpack the archive to use the images.</p>
+<p>Or you can can search for royalty free images using a Google search, all you have to do is search for the images. select tools from the menu then select your preferred license type, I choose images labeled for reuse.</p>
+<p><img src="img/09.jpg" alt=""></p>
+<h2>Flashcard Question</h2>
+<p>No you can start to set up the second question, in order to do this you must add a new card</p>
+<p><img src="img/14.jpg" alt=""></p>
+<p>Again, fill in the question text in the field provided followed by the correct answer. We will ask them what is the Electronegativity  (Pauling scale) is  . . . . associated with the Polonium element from the periodic table, the answer is 2.0</p>
+<p><img src="img/15.jpg" alt=""></p>
+<h2>Flashcard image</h2>
+<p>Now you can associate an image with the question, upload your image from you computer that you have chosen or if you want please feel free to use the images supplied in the archive.</p>
+<p><img src="img/16.jpg" alt=""></p>
+<p>You should now have the image in place</p>
+<p><img src="img/17.jpg" alt=""></p>
+<h2>Next</h2>
+<p>Move to step 04 to add the last question.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>The thrid question</h1>
+<p>This is the third (last) of three questions</p>
+<h2>Free images</h2>
+<p>If you want you can use my images for example from the periodic table, download the archive - <a href="./archives/archive.zip">here</a> and unpack the archive to use the images.</p>
+<p>Or you can can search for royalty free images using a Google search, all you have to do is search for the images. select tools from the menu then select your preferred license type, I choose images labeled for reuse.</p>
+<p><img src="img/09.jpg" alt=""></p>
+<h2>Flashcard Question</h2>
+<p>No you can start to set up the second question, in order to do this you must add a new card</p>
+<p><img src="img/18.jpg" alt=""></p>
+<p>Again, fill in the question text in the field provided followed by the correct answer. We will ask them what is the Electron affinity (kJ mol−1)  . . . associated with the Radium element from the periodic table, the answer is 9.65</p>
+<p><img src="img/19.jpg" alt=""></p>
+<h2>Flashcard image</h2>
+<p>Now you can associate an image with the question, upload your image from you computer that you have chosen or if you want please feel free to use the images supplied in the archive.</p>
+<p><img src="img/20.jpg" alt=""></p>
+<p>You should now have the image in place</p>
+<p><img src="img/21.jpg" alt=""></p>
+<h2>Testing</h2>
+<p>Thats it your finished creating the flashcard component all you have to now is save all your changes and test you work to make sure everything works as it should.</p>
+<p>As you work through the component in Moodle you will be presented with the result as the student would see them and it will also give the student the option to retry.</p>
+<p><img src="img/22.jpg" alt=""></p>
+<h2>Next</h2>
+<p>Move to the Exercise </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercises</h1>
+<p>To complete this workshop please complete the Flashcard activity in Moodle</p>
+<h2>Feedback</h2>
+<p>Please let us know if you had any issues with this workshop, we want to make improvements but we need you help, please take a few moment to fill in <a href="https://b.socrative.com/student/#quiz" target="_blank">this feedback</a> we appreciate all comments and suggestions </p>
+<h2>Accreditation</h2>
+<p>In order to receive your accreditation you will have to upload and submit your Flashcard activity to Moodle.</p>
+<h2>step 1</h2>
+<p>First, you must download the flashcard activity from your Moodle sandbox page, in order to download first view the H5P activity in Moodle in the bottom left of the screen you should see an option to reuse, click reuse </p>
+<p><img src="img/23.jpg" alt="reuse"></p>
+<p>You can download the H5P activity bu selecting the <strong>Download as an .h5p file</strong> option</p>
+<p><img src="img/24.jpg" alt="download"></p>
+<h2>step 2</h2>
+<p>This file should be in your downloads folder on your computer, drag and drop that file from downloads to the dropbox area into the assignment submission area in Moodle, and click the <strong>add submission</strong> button <a href="http://conorpaul.com/moodle35/mod/assign/view.php?id=19" target="_blank"> here </a> </p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

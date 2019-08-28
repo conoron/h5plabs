@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  Moodle Module Basics   </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01">
+          Lab-01
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="Exercises">
+          Exercises
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-01-basics/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-01-basics/book-b/index.html">Lab-02 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-02-dragndrop/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-03-flashcards/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-04-presentation/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-05-timeline/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-06-video/book-a/index.html">Lab-01 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="https://conoron.github.io/h5plabs//topic-07-next/book-a/index.html">Lab-01 </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01">
+            <h1>Objectives</h1>
+<p>In this lab we will look at putting the basics of your Moodle module in place, such hiding sections that are not in use and uploading a module image.</p>
+<h2>How to use this lab</h2>
+<p>When you click on the lab card on the workshop screen (see example below) you will be presented with the labs steps screen</p>
+<p><img src="img/01.png" alt=""></p>
+<h2>Lab steps</h2>
+<p>Next you will need to work your way through each step, starting with the objective (this screen) then work your way through the steps start with 01 then moving to 02 and so on.</p>
+<p><img src="img/02.png" alt=""></p>
+<h2>Getting back to the home screen</h2>
+<p>In order to get back to the workshop screen simply click on the workshop name in the top left</p>
+<p><img src="img/03.png" alt=""></p>
+<h2>Next</h2>
+<p>Move to step 01 in the lab</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h2>Moodle Sandbox</h2>
+<p>In order to complete these workshops you will have to work from a training area in Moodle,we call this a sandbox, please contact <a href="mailto:cponeill@wit.ie">Conor O&#39;Neill</a> to gain access.</p>
+<p>Log into Moodle <a href="http://moodle.wit.ie" target="_blank">here</a>  and navigate to your sandbox.</p>
+<h2>The Module Image</h2>
+<p>Your Moodle module when created will have a default image, you can change the image in the Module settings</p>
+<h2>Change the Image</h2>
+<p>The image that your going to change is the image that is associated as the default image for the module when the module is first created, see below and example of a default image.</p>
+<p><img src="img/01.jpg" alt=""></p>
+<h2>Edit Settings</h2>
+<p>To change the image you first need to <strong>turn editing on</strong> from the settings for the module.</p>
+<p><img src="img/02.jpg" alt=""></p>
+<h2>Drag and Drop</h2>
+<p>To change the image drag and drop your image into the &quot;summary files&quot; space, you can use any image that you have, I just upload a <strong>.jpg</strong> file I had in my downloads folder.</p>
+<p><img src="img/08.jpg" alt=""></p>
+<h2>Save your changes</h2>
+<p>Like all changes in Moodle you need to make sure you save your changes</p>
+<p><img src="img/04.jpg" alt=""></p>
+<p>Your done,  <strong><em>Move to the next step</em></strong>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>The Module Sections</h1>
+<p>Your Moodle module when created will have a default sections, in this step you wil learn how and why you should close off blank (unuesed) sections.</p>
+<h2>Edit Settings</h2>
+<p>To hide blank section you first need to <strong>turn editing on</strong> for the module</p>
+<p><img src="img/05.jpg" alt=""></p>
+<h2>Edit the section</h2>
+<p>Its important to hide a section because if the section is blank and is not hidden the student have visibility and it causes confusion for the student, click on edit then click on Hide section.</p>
+<p><img src="img/06.jpg" alt=""></p>
+<p>Repeat this process with all blank sections</p>
+<p>When you finished and you have turned editing off your hidden section should now have a strike-through</p>
+<p><img src="img/07.jpg" alt=""></p>
+<p>Your done,  <strong><em>Move to the next step</em></strong>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>The Module Participants</h1>
+<p>Normally your student (participants) will appear in your module, from time to time you may want to view the participant list to look up either the student email or their last access.</p>
+<h2>Participants option</h2>
+<p>To view the participants of a module click on the Participant on the left hand side of the screen.</p>
+<p><img src="img/09.jpg" alt=""></p>
+<h2>Participants list</h2>
+<p>You now should be able to see the participants list along with other details such as they email address and when they last logged into this module.</p>
+<p><img src="img/10.jpg" alt=""></p>
+<h2>Adding Participants</h2>
+<p>To add a participant click on the Enrol users button</p>
+<p><img src="img/11.jpg" alt=""></p>
+<p>Then search for the user that you want to add</p>
+<p><img src="img/12.jpg" alt=""></p>
+<p>When you find that user click on the name then click the Enrol button at the bottom of the popup screen</p>
+<p><img src="img/13.jpg" alt=""></p>
+<p>You have manually add a participant and if you look at the participants list once again you should see that user in the list.</p>
+<p>Your done,  <strong><em>Move to the next step</em></strong>.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercises">
+            <h1>Exercise</h1>
+<ol>
+<li>Navigate to your Sandbox module and change the module image.</li>
+<li>In your Sandbox module hide all blank sections.</li>
+<li>In your Sandbox Module view the participant and add a new participant.</li>
+</ol>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
